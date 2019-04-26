@@ -11,6 +11,7 @@ def video_to_frames(input_loc, output_loc):
     Returns:
         None
     """
+
     try:
         os.mkdir(output_loc)
     except OSError:
@@ -29,7 +30,7 @@ def video_to_frames(input_loc, output_loc):
         # Extract the frame
         ret, frame = cap.read()
         # Crop image
-        frame = frame[30:30+840, 400:400+1150]
+        frame = frame[:,:]
         # Write the results back to output location.
         cv2.imwrite(output_loc + "/%#05d.jpg" % (count+1), frame)
         count = count + 1
